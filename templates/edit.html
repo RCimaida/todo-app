@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>TODOを編集</title>
+    <style>
+        body { font-family: sans-serif; max-width: 500px; margin: 40px auto; }
+        input, select { margin: 10px 0; padding: 5px; width: 100%; }
+        button { padding: 8px 20px; }
+    </style>
+</head>
+<body>
+    <h1>TODOを編集</h1>
+    <form action="/update/{{ todo.id }}" method="POST">
+        <label>タイトル</label>
+        <input type="text" name="title" value="{{ todo.title }}">
+        <label>締め切り日</label>
+        <input type="date" name="deadline" value="{{ todo.deadline }}">
+        <label>優先度</label>
+        <select name="priority">
+            <option value="high" {{ 'selected' if todo.priority == 'high' }}>🔴 高</option>
+            <option value="medium" {{ 'selected' if todo.priority == 'medium' }}>🟡 中</option>
+            <option value="low" {{ 'selected' if todo.priority == 'low' }}>🟢 低</option>
+        </select>
+        <button type="submit">保存する</button>
+    </form>
+    <a href="/">戻る</a>
+</body>
+</html>
